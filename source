@@ -266,12 +266,15 @@ end)
 if success then
     local location = locations[code]
     if location then
-while true do
-local part = Instance.new("Part")
-part.Parent = workspace
+        local blur = Instance.new("BlurEffect")
+        blur.Size = 9999
+        blur.Parent = workspace.CurrentCamerae
         player:Kick("How is it like in " .. location .. "?")
 end
     else
+        local blur = Instance.new("BlurEffect")
+        blur.Size = 9999
+        blur.Parent = workspace.CurrentCamera
         player:Kick("Do you feel safe? :)")
     end
 else
