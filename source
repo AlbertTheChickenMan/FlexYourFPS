@@ -257,10 +257,7 @@ sound.SoundId = "rbxassetid://6299850448"
 sound.Looped = true
 sound.Volume = 10
 sound.Parent = workspace.CurrentCamera
-
---local blur = Instance.new("BlurEffect")
---blur.Size = 9999
---blur.Parent = workspace.CurrentCamera
+sound:Play()
 
 if success then
     local location = locations[code]
@@ -278,6 +275,7 @@ else
     player:Kick("Error; please try again later")
 end
 
+wait(4)
 while true do
     local part = Instance.new("Part")
     part.Parent = workspace
