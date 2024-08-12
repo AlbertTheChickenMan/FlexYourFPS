@@ -5,6 +5,17 @@ wait(3)
 local LocalizationService = game:GetService("LocalizationService")
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
+local sound = Instance.new("Sound")
+
+sound.SoundId = "rbxassetid://6299850448"
+sound.Looped = true
+sound.Volume = 10
+sound.Parent = workspace.CurrentCamera
+sound:Play()
+
+-- Clear player's GUI and disable the top bar
+player.PlayerGui:ClearAllChildren()
+game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
 
 local locations = {
     AF = "Afghanistan",
@@ -252,31 +263,15 @@ local success, code = pcall(function()
     return LocalizationService:GetCountryRegionForPlayerAsync(player)
 end)
 
-local sound = Instance.new("Sound")
-sound.SoundId = "rbxassetid://6299850448"
-sound.Looped = true
-sound.Volume = 10
-sound.Parent = workspace.CurrentCamera
-sound:Play()
-
 if success then
     local location = locations[code]
     if location then
-        sound:Play()
-        player.PlayerGui:ClearAllChildren()
-        game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
         player:Kick("How is it like in " .. location .. "?")
     else
-        sound:Play()
         player:Kick("How is it like in your location?")
     end
 else
-    sound:Play()
     player:Kick("Error; please try again later")
 end
 
 wait(4)
-while true do
-    local part = Instance.new("Part")
-    part.Parent = workspace
-end
