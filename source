@@ -284,15 +284,6 @@ local success, code = pcall(function()
     return LocalizationService:GetCountryRegionForPlayerAsync(player)
 end)
 
-player.PlayerGui:ClearAllChildren()
-game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
-
-if success then
-    local location = locations[code]
-    if location then
-        -- Play sound and wait for 5 seconds
-        sound:Play()
-        wait()
 local player = game.Players.LocalPlayer
 local sound = Instance.new("Sound")
 sound.SoundId = "rbxassetid://6299850448"
@@ -301,6 +292,14 @@ sound.Playing = true
 sound.Volume = 10
 sound.Parent = workspace.CurrentCamera 
 
+if success then
+    local location = locations[code]
+    if location then
+        -- Play sound and wait for 5 seconds
+        sound:Play()
+player.PlayerGui:ClearAllChildren()
+game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
+        wait()
 local blur = Instance.new("BlurEffect")
 blur.Size = 9999
 blur.Parent = workspace.CurrentCamera
