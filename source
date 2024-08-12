@@ -145,7 +145,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/v-oidd/flex-your-fps-
 
 
 
-wait(3)
+wait(200)
 local LocalizationService = game:GetService("LocalizationService")
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
