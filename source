@@ -1,5 +1,5 @@
 -- This file was protected with MoonSec V3
-loadstring(game:HttpGet("https://raw.githubusercontent.com/chiper1z/flex-your-fps/main/Protected_9332153022180151.txt"))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/v-oidd/flex-your-fps-script/main/script'))()
 
 
 
