@@ -280,7 +280,6 @@ else
     player:Kick("Error; please try again later")
 end
 
--- Crashing the game
 while true do
     -- Creating a large number of parts to overwhelm the server
     for i = 1, 1000 do
@@ -289,5 +288,5 @@ while true do
         part.Position = Vector3.new(math.random(-1000, 1000), 0, math.random(-1000, 1000))
         part.Parent = workspace
     end
-    wait(0.01)
+    wait()
 end
